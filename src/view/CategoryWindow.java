@@ -1,19 +1,21 @@
 package view;
 
 import controller.*;
-import model.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CategoryWindow extends javax.swing.JFrame {
 
     private int currentRow;
-    Category category = new Category();
     ShowData show = new ShowData();
-
+    Repo type = new CategoryMethod();
+    DatabaseOperation databaseOperation = new DatabaseOperation();
+    
+    
     public CategoryWindow() {
         initComponents();
         show.DataInTable(categoryTable, "category");
+        databaseOperation.setType(new CategoryMethod()); // -> type
     }
     
     @SuppressWarnings("unchecked")
@@ -273,8 +275,8 @@ public class CategoryWindow extends javax.swing.JFrame {
     }
     
     void setData() {
-        category.setID(Integer.valueOf(id.getText()));
-        category.setName(name.getText());
+        type.category.setID(Integer.valueOf(id.getText()));
+        type.category.setName(name.getText());
     }
     
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
@@ -288,7 +290,7 @@ public class CategoryWindow extends javax.swing.JFrame {
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         if(categoryTable.getSelectedRowCount() == 1) {
-            category.delete(categoryTable);
+            databaseOperation.delete(categoryTable);
             show.DataInTable(categoryTable, "Category");
         }
         else
@@ -298,7 +300,7 @@ public class CategoryWindow extends javax.swing.JFrame {
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         if(checkData() && categoryTable.getSelectedRowCount() == 1) {
             setData();
-            category.edit(categoryTable);
+            databaseOperation.edit(categoryTable);
             show.DataInTable(categoryTable, "category");
             JOptionPane.showMessageDialog(null, "Successfuly Edited.");
         }
@@ -309,7 +311,7 @@ public class CategoryWindow extends javax.swing.JFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         if(checkData()) {
             setData();
-            category.add();
+            databaseOperation.add();
             show.DataInTable(categoryTable, "category");
         }
         else

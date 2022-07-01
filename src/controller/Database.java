@@ -6,14 +6,18 @@ import javax.swing.JOptionPane;
 public class Database {
         
     private static Connection connection = null;
-    
-    public Database() {
         
+    private Database() {
+        //
     }
     
     public static Connection connect() {
+        String url = "jdbc:sqlserver://DESKTOP-L1JM9QG\\SQLEXPRESS;databaseName=InvSystem;"
+                + "integratedSecurity=true;encrypt=false";
+    
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            //connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            connection = DriverManager.getConnection(url);
             return connection;
             
         } catch(SQLException e) {
@@ -21,4 +25,5 @@ public class Database {
         }
         return null;
     }
+    
 }

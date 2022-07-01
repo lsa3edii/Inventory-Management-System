@@ -1,21 +1,17 @@
 package model;
 
-import controller.*;
-
 public class Admin {
-
-    private String name;
+    
     private int id;
+    private String name;
     private String password;
-    private AdminMethod admin = new AdminMethod();
     
     public Admin() {
 
     }
 
-    public Admin(String name, int id, String password) {
+    public Admin(String name, String password) {
         this.name = name;
-        this.id = id;
         this.password = password;
     }
 
@@ -42,20 +38,5 @@ public class Admin {
     public String getPassword() {
         return this.password;
     }
-    
-    public boolean add() {
-        if(admin.add(this))
-            return true;
-        else 
-            return false;
-    }
-    
-    public void edit(javax.swing.JTable table) {
-        admin.edit(this, table);
-    }
-    
-    public void delete(javax.swing.JTable table) {
-        admin.delete(this, table);
-    }
-    
+
 }

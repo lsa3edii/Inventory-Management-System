@@ -1,19 +1,20 @@
 package view;
 
 import controller.*;
-import model.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CustomerWindow extends javax.swing.JFrame {
 
     private int currentRow;
-    Customer customer = new Customer();
     ShowData show = new ShowData();
+    Repo type = new CustomerMethod();
+    DatabaseOperation databaseOperation = new DatabaseOperation();
 
     public CustomerWindow() {
         initComponents();
         show.DataInTable(customerTable, "Customer");
+        databaseOperation.setType(new CustomerMethod()); // -> type
     }
 
     @SuppressWarnings("unchecked")
@@ -309,9 +310,9 @@ public class CustomerWindow extends javax.swing.JFrame {
     }
        
     void setData() {
-        customer.setID(Integer.valueOf(id.getText()));
-        customer.setName(name.getText());
-        customer.setPhone(phone.getText());
+        Repo.customer.setID(Integer.valueOf(id.getText()));
+        Repo.customer.setName(name.getText());
+        Repo.customer.setPhone(phone.getText());
     }
     
     private void exitAppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitAppMouseClicked
@@ -326,7 +327,7 @@ public class CustomerWindow extends javax.swing.JFrame {
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         if(checkData() && customerTable.getSelectedRowCount() == 1) {
             setData();
-            customer.edit(customerTable);
+            databaseOperation.edit(customerTable);
             show.DataInTable(customerTable, "Customer");
             JOptionPane.showMessageDialog(null, "Successfuly Edited.");
         }
@@ -336,7 +337,7 @@ public class CustomerWindow extends javax.swing.JFrame {
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         if(customerTable.getSelectedRowCount() == 1) {
-            customer.delete(customerTable);
+            databaseOperation.delete(customerTable);
             show.DataInTable(customerTable, "Customer");
         }
         else
@@ -346,7 +347,7 @@ public class CustomerWindow extends javax.swing.JFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         if(checkData()) {
             setData();
-            customer.add();
+            databaseOperation.add();
             show.DataInTable(customerTable, "Customer");
         }
         else

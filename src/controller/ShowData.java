@@ -8,8 +8,9 @@ import net.proteanit.sql.DbUtils;
 public class ShowData {
     
     private String sql;
+    Connection Connection = Database.connect();
     Statement statement = null;
-    ResultSet resultSet = null;
+    ResultSet result = null;
     
     public ShowData() {
         //Database.connect();
@@ -17,10 +18,12 @@ public class ShowData {
 
     public void DataInTable(javax.swing.JTable table, String tableName) {
         sql = "select * from " + tableName;
+        
         try {
-            statement = Database.connect().createStatement();
-            resultSet = statement.executeQuery(sql);
-            table.setModel(DbUtils.resultSetToTableModel(resultSet));
+            statement = Connection.createStatement();
+            result = statement.executeQuery(sql);
+            table.setModel(DbUtils.resultSetToTableModel(result));
+            //Connection.close();
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
@@ -29,15 +32,18 @@ public class ShowData {
     
     public void DataInComboBox(javax.swing.JComboBox<String> category) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
         try {
             statement = Database.connect().createStatement();
-            resultSet = statement.executeQuery("select * from category");
+            result = statement.executeQuery("select * from category");
             
-            while(resultSet.next())
-                category.addItem(resultSet.getString("name"));
-                        
+            while(result.next())
+                category.addItem(result.getString("name"));
+            //Connection.close();
+            
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }
