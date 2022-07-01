@@ -1,68 +1,38 @@
 package controller;
 
-import java.io.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import model.*;
+import model.Admin;
 
-public class Methods {
+public class Methods implements Repository{
     
-    private int line;
-    Files f = new Files();
-    
+    Connection connection = Database.connect();
+
     public Methods() {
-        //
+        
     }
     
-    public void showData(File f, DefaultTableModel model) {
+    @Override
+    public void edit(String sql) {
         try {
-            Scanner input = new Scanner(f);
-            while (input.hasNext()) {
-                String line = input.nextLine();
-                String[] row = line.split("\t");
-                model.addRow(row);
-            }
+            PreparedStatement edit = connection.prepareStatement(sql);
+            edit.executeUpdate();
 
-        } catch (FileNotFoundException ex) {
-            System.out.println("false");
-        }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+        } 
     }
-   
-    public static void delete(File f, javax.swing.JTable table) {
+
+    @Override
+    public void delete(String sql) {
         try {
-            FileWriter fw = new FileWriter(f);
-            BufferedWriter bw = new BufferedWriter(fw);
-            DefaultTableModel model = (DefaultTableModel) table.getModel();
-
-            model.removeRow(table.getSelectedRow());
-            for (int i = 0; i < table.getRowCount(); i++) {
-                for (int j = 0; j < table.getColumnCount(); j++) {
-
-                    bw.write(table.getValueAt(i, j) + "\t");
-                }
-                bw.newLine();
-            }
-            bw.close();
-            fw.close();
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error");
+            PreparedStatement delete = connection.prepareStatement(sql);
+            delete.executeUpdate();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    public int countLine(File f) {
-        try {
-            line = 1;
-            RandomAccessFile raf = new RandomAccessFile(f, "rw");
-            while (raf.readLine() != null) {
-                line++;
-            }
-            return line;
-
-        } catch (Exception ex) {
-            System.out.println("Error");
-        }
-        return line;
     }
 }

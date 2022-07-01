@@ -1,72 +1,48 @@
 package controller;
 
 import model.*;
-import java.io.*;
-import java.util.*;
-import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
-public class ProductMethod extends Product implements Controller{
-    
+public class ProductMethod {
+
+    Connection connection = Database.connect();
     Methods method = new Methods();
-    Files file = new Files();
-    
+    private String sql;
+
     public ProductMethod() {
-        //
-    }
-    
-    @Override
-    public void add(DefaultTableModel model) {
-        try {
-            RandomAccessFile raf = new RandomAccessFile(file.getProductFile(), "rw");
-            for(int i=0 ; i<method.countLine(file.getProductFile()) ; i++){
-                raf.readLine();
-            }
-            
-            raf.writeBytes(this.getID() + "\t");
-            raf.writeBytes(this.getName() + "\t");
-            raf.writeBytes(this.getDescription() + "\t");
-            raf.writeBytes(this.getQuantity() + "\t");
-            raf.writeBytes(this.getCategory() + "\t\n");
-            
-            Scanner input = new Scanner(file.getProductFile());
 
-            model.setNumRows(0);
-            while (input.hasNext()) {
-                String line = input.nextLine();
-                String[] row = line.split("\t");
-                model.addRow(row);
-            }
-        } catch (Exception ex) {
+    }
+
+    public void add(Product product) {
+        try {
+            PreparedStatement add = connection.prepareStatement("insert into product values(?,?,?,?,?,?)");
+
+            add.setInt(1, product.getID());
+            add.setString(2, product.getName());
+            add.setInt(3, product.getPrice());
+            add.setInt(4, product.getQuantity());
+            add.setString(5, product.getDescription());
+            add.setString(6, product.getCategory().getSelectedItem().toString());
+            add.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    @Override
-    public void edit(javax.swing.JTable table) {
-        int currentRow;
-        try {
-            DefaultTableModel model = (DefaultTableModel) table.getModel();
 
-            FileWriter fw = new FileWriter(file.getProductFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            currentRow = table.getSelectedRow();
-            model.setValueAt(this.getID(), currentRow, 0);
-            model.setValueAt(this.getName(), currentRow, 1);
-            model.setValueAt(this.getDescription() , currentRow, 2);
-            model.setValueAt(this.getQuantity(), currentRow, 3);
-            model.setValueAt(this.getCategory(), currentRow, 4);
-
-            if (table.getSelectedRowCount() == 1) {
-                for (int i = 0; i < table.getRowCount(); i++) {
-                    for (int j = 0; j < table.getColumnCount(); j++) {
-                        bw.write(table.getValueAt(i, j) + "\t");
-                    }
-                    bw.newLine();
-                }
-                bw.close();
-                fw.close();
-            }
-        } catch (Exception ex) {
-        }
+    public void edit(Product product, JTable table) {
+        sql = "Update product set name='" + product.getName() + "' ,id='" + product.getID() + "' ,price='"
+                + product.getPrice() + "' ,quantity='" + product.getQuantity() + "' ,description='"
+                + product.getDescription() + "' ,category='" + product.getCategory().getSelectedItem()
+                + "' where id ='" + table.getValueAt(table.getSelectedRow(), 0) + "'";
+        method.edit(sql);
     }
+
+    public void delete(Product product, JTable table) {
+        sql = "Delete from Product where id='" + table.getValueAt(table.getSelectedRow(), 0) + "' ";
+        method.edit(sql);
+    }
+
 }
