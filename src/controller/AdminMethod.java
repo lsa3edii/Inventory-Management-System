@@ -1,20 +1,20 @@
 package controller;
 
-import model.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class AdminMethod {
+public class AdminMethod implements Repository{
 
     Connection connection = Database.connect();
-    Methods method = new Methods();
+    ResultSet result = null;
     private String sql;
 
     public AdminMethod() {
         //Database.connect();
     }
 
-    public boolean add(Admin admin) {
+    @Override
+    public boolean add() {
         try {
             PreparedStatement add = connection.prepareStatement("insert into Admin values(?,?,?)");
 
@@ -30,15 +30,67 @@ public class AdminMethod {
         return false;
     }
 
-    public void edit(Admin admin, javax.swing.JTable table) {
-        sql = "Update Admin set name='" + admin.getName() + "' ,id='" + admin.getID() + "' ,password='"
-                + admin.getPassword() + "' where id ='" + table.getValueAt(table.getSelectedRow(), 0) + "'";
-        method.edit(sql);
+    @Override
+    public void edit() {
+        sql = "Update Admin set name = '" + admin.getName() +  "' ,password = '"
+                + admin.getPassword() + "' where id = " + Repository.login.getID();
+        
+        try {
+            PreparedStatement edit = connection.prepareStatement(sql);
+            edit.executeUpdate();
+            //connection.close();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+        } 
     }
 
-    public void delete(Admin admin, javax.swing.JTable table) {
-        sql = "Delete from Admin where id='" + table.getValueAt(table.getSelectedRow(), 0) + "' ";
-        method.edit(sql);
+    @Override
+    public void delete() {
+        sql = "Delete from Admin where id = " + Repository.login.getID();
+        
+        try {
+            PreparedStatement delete = connection.prepareStatement(sql);
+            delete.executeUpdate();
+            //connection.close();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+        }
     }
+    
+    @Override
+    public boolean checkPassword(String password) {
+        sql = "select password from Admin where id = " + Repository.login.getID();
 
+        try {
+            PreparedStatement select = connection.prepareStatement(sql);
+            result = select.executeQuery();
+            
+            if(result.next() && result.getString("password").equals(password)) 
+                return true;
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+    
+    @Override
+    public String selectName() {
+        sql = "select name from Admin where id = " + Repository.login.getID();
+
+        try {
+            PreparedStatement select = connection.prepareStatement(sql);
+            result = select.executeQuery();
+            
+            if(result.next())
+                return result.getString("name");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);//        
+        }
+        return null;
+    }
+    
 }

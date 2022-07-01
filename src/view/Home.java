@@ -1,7 +1,7 @@
 package view;
 
 public class Home extends javax.swing.JFrame {
-       
+           
     public Home() {
         initComponents();
     }
@@ -24,7 +24,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
-        users = new javax.swing.JButton();
+        staff = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class Home extends javax.swing.JFrame {
         product.setBackground(new java.awt.Color(255, 51, 51));
         product.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
         product.setForeground(new java.awt.Color(255, 255, 255));
-        product.setText("PRODUCT");
+        product.setText("Products");
         product.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 productMouseClicked(evt);
@@ -78,7 +78,7 @@ public class Home extends javax.swing.JFrame {
         category.setBackground(new java.awt.Color(255, 51, 51));
         category.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
         category.setForeground(new java.awt.Color(255, 255, 255));
-        category.setText("CATEGORY");
+        category.setText("Categories");
         category.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 categoryMouseClicked(evt);
@@ -88,7 +88,7 @@ public class Home extends javax.swing.JFrame {
         customer.setBackground(new java.awt.Color(255, 51, 51));
         customer.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
         customer.setForeground(new java.awt.Color(255, 255, 255));
-        customer.setText("CUSTOMER");
+        customer.setText("Customers");
         customer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 customerMouseClicked(evt);
@@ -98,7 +98,7 @@ public class Home extends javax.swing.JFrame {
         order.setBackground(new java.awt.Color(255, 51, 51));
         order.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
         order.setForeground(new java.awt.Color(255, 255, 255));
-        order.setText("ORDERS");
+        order.setText("Orders");
         order.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 orderMouseClicked(evt);
@@ -147,7 +147,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(exit))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
+                        .addGap(202, 202, 202)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -163,13 +163,13 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        users.setBackground(new java.awt.Color(255, 51, 51));
-        users.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
-        users.setForeground(new java.awt.Color(255, 255, 255));
-        users.setText("USERS");
-        users.addMouseListener(new java.awt.event.MouseAdapter() {
+        staff.setBackground(new java.awt.Color(255, 51, 51));
+        staff.setFont(new java.awt.Font("Century Schoolbook", 3, 24)); // NOI18N
+        staff.setForeground(new java.awt.Color(255, 255, 255));
+        staff.setText("Staff");
+        staff.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usersMouseClicked(evt);
+                staffMouseClicked(evt);
             }
         });
 
@@ -206,7 +206,7 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel14))))
                         .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(users, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(customer, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +223,7 @@ public class Home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(users, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,10 +307,10 @@ public class Home extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMouseClicked
 
-    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
+    private void staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staffMouseClicked
         new AdminWindow().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_usersMouseClicked
+    }//GEN-LAST:event_staffMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -359,6 +359,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton logOut;
     private javax.swing.JButton order;
     private javax.swing.JButton product;
-    private javax.swing.JButton users;
+    private javax.swing.JButton staff;
     // End of variables declaration//GEN-END:variables
 }

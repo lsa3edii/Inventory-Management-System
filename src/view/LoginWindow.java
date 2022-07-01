@@ -1,6 +1,6 @@
 package view;
 
-import java.sql.*;
+import controller.Repository;
 import javax.swing.JOptionPane;
 import model.*;
 
@@ -10,7 +10,7 @@ public class LoginWindow extends javax.swing.JFrame {
     
     public LoginWindow() {
         initComponents();
-        this.setVisible(true);
+        //this.setVisible(true);
     }
     
     @SuppressWarnings("unchecked")
@@ -244,8 +244,8 @@ public class LoginWindow extends javax.swing.JFrame {
     }
     
     void setData() {
-        log.setID(Integer.valueOf(id.getText()));
-        log.setPassword(password.getText());
+        Repository.login.setID(Integer.valueOf(id.getText()));
+        Repository.login.setPassword(password.getText());
     }
     
     private void clearLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearLoginMouseClicked
@@ -268,14 +268,11 @@ public class LoginWindow extends javax.swing.JFrame {
             if (log.Check()) {
                 new Home().setVisible(true);
                 this.dispose();
-            }
-            else {
-                this.dispose();
-                new LoginWindow().setVisible(true);
+                
+            } else
                 JOptionPane.showMessageDialog(this, "Wrong ID Or Password!!");
-            }
-        }
-        else 
+            
+        } else 
             JOptionPane.showMessageDialog(this, "Incomplete Information!");
     }//GEN-LAST:event_loginMouseClicked
      

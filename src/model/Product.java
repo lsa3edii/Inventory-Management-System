@@ -10,7 +10,7 @@ public class Product {
     private String description;
     private int quantity;
     private javax.swing.JComboBox<String> category;
-    private ProductMethod product = new ProductMethod();
+    private String search;
     
     public Product() {
         //
@@ -64,16 +64,12 @@ public class Product {
         return this.category;
     }
     
-    public void add() {
-        product.add(this);
+    public void setSearch(String search) {
+        this.search = search;
     }
-    
-    public void edit(javax.swing.JTable table) {
-        product.edit(this, table);
-    }
-    
-    public void delete(javax.swing.JTable table) {
-        product.delete(this, table);
+
+    public String getSearch() {
+        return this.search;
     }
     
 }

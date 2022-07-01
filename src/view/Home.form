@@ -110,7 +110,7 @@
                               </Group>
                               <EmptySpace min="62" pref="62" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="users" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                  <Component id="staff" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                   <Component id="customer" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                   <Component id="category" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                                   <Component id="logOut" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
@@ -132,7 +132,7 @@
                       <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
-                          <Component id="users" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="staff" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -200,7 +200,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="PRODUCT"/>
+                <Property name="text" type="java.lang.String" value="Products"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productMouseClicked"/>
@@ -217,7 +217,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CATEGORY"/>
+                <Property name="text" type="java.lang.String" value="Categories"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="categoryMouseClicked"/>
@@ -234,7 +234,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CUSTOMER"/>
+                <Property name="text" type="java.lang.String" value="Customers"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="customerMouseClicked"/>
@@ -251,7 +251,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ORDERS"/>
+                <Property name="text" type="java.lang.String" value="Orders"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="orderMouseClicked"/>
@@ -293,7 +293,7 @@
                                   <Component id="exit" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -359,7 +359,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="users">
+            <Component class="javax.swing.JButton" name="staff">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -370,10 +370,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="USERS"/>
+                <Property name="text" type="java.lang.String" value="Staff"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="usersMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="staffMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">

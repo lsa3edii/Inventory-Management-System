@@ -1,20 +1,16 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
-import model.Admin;
 
-public class Methods implements Repository{
+public class Methods{
     
     Connection connection = Database.connect();
 
     public Methods() {
-        
+        //
     }
     
-    @Override
     public void edit(String sql) {
         try {
             PreparedStatement edit = connection.prepareStatement(sql);
@@ -25,7 +21,6 @@ public class Methods implements Repository{
         } 
     }
 
-    @Override
     public void delete(String sql) {
         try {
             PreparedStatement delete = connection.prepareStatement(sql);
@@ -35,4 +30,5 @@ public class Methods implements Repository{
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }

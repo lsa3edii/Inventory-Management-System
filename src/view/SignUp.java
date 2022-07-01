@@ -1,12 +1,11 @@
 package view;
 
 import controller.*;
-import model.*;
 import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
     
-    Admin admin = new Admin();
+    Repository type = new AdminMethod();
     
     public SignUp() {
         initComponents();
@@ -265,9 +264,9 @@ public class SignUp extends javax.swing.JFrame {
     }
     
     void setData() {
-        admin.setID(Integer.valueOf(id.getText()));
-        admin.setName(name.getText());
-        admin.setPassword(password.getText());
+        type.admin.setID(Integer.valueOf(id.getText()));
+        type.admin.setName(name.getText());
+        type.admin.setPassword(password.getText());
     }
     
     private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked
@@ -288,7 +287,7 @@ public class SignUp extends javax.swing.JFrame {
     private void createAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMouseClicked
         if(checkData()) {
             setData();
-            if(admin.add()) {
+            if(type.add()) {
                 JOptionPane.showMessageDialog(null, "Successfuly Created!\nGo To Login.");
                 this.dispose();
                 new LoginWindow().setVisible(true);
