@@ -1,2 +1,2 @@
-# Inventory-Management-System
-This App is Used in Sales
+# Software_Project
+This is software engineering 2 project 

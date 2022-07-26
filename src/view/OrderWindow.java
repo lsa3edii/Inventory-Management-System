@@ -3,8 +3,8 @@ package view;
 import controller.*;
 import model.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 public class OrderWindow extends javax.swing.JFrame {

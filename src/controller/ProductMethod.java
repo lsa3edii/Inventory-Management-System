@@ -64,21 +64,21 @@ public class ProductMethod implements Repo{
         }
     }
     
-    public boolean search() {
-        sql = "select * from Product";
-
-        try {
-            PreparedStatement search = connection.prepareStatement(sql);
-            result = search.executeQuery();
-            
-            while(result.next())
-                if(result.getString("name").equals(product.getSearch()))
-                    return true;
-                
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
-        }
-        return false;
-    }
+//    public boolean search() {
+//        sql = "select * from Product";
+//
+//        try {
+//            PreparedStatement search = connection.prepareStatement(sql);
+//            result = search.executeQuery();
+//            
+//            while(result.next())
+//                if(result.getString("name").contains(product.getSearch()))
+//                    return true;
+//                
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+//        }
+//        return false;
+//    }
     
 }

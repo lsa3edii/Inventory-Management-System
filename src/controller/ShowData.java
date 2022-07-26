@@ -11,6 +11,7 @@ public class ShowData {
     Connection Connection = Database.connect();
     Statement statement = null;
     ResultSet result = null;
+    Repo repo;
     
     public ShowData() {
         //Database.connect();
@@ -23,7 +24,6 @@ public class ShowData {
             statement = Connection.createStatement();
             result = statement.executeQuery(sql);
             table.setModel(DbUtils.resultSetToTableModel(result));
-            //Connection.close();
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
@@ -39,11 +39,23 @@ public class ShowData {
             
             while(result.next())
                 category.addItem(result.getString("name"));
-            //Connection.close();
             
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void DataInTableAfterSearch(javax.swing.JTable table) {
+        sql = "select * from product where name like '%" + repo.product.getSearch() + "%'";
+        
+        try {
+            statement = Connection.createStatement();
+            result = statement.executeQuery(sql);
+            table.setModel(DbUtils.resultSetToTableModel(result));
+            
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error!!", JOptionPane.ERROR_MESSAGE);
+        }
+    }    
     
 }
