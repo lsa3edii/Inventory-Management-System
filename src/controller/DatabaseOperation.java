@@ -30,10 +30,10 @@ public class DatabaseOperation {
         type.delete(table);
     }
     
-    public boolean search() {
-        if(new ProductMethod().search())
-            return true;
-        return false;
-    }
+//    public boolean search() {
+//        if(new ProductMethod().search())
+//            return true;
+//        return false;
+//    }
     
 }

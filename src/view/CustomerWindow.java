@@ -2,7 +2,6 @@ package view;
 
 import controller.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class CustomerWindow extends javax.swing.JFrame {
 
